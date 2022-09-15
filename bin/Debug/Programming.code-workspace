@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\Documents\\Python\\00 - Template"
+		},
+		{
+			"path": "..\\test c"
+		}
+	],
+	"settings": {
+		"window.zoomLevel": 0,
+		"terminal.integrated.fontSize": 12,
+		"workbench.colorTheme": "Noctis Minimus",
+		"workbench.iconTheme": "vscode-icons",
+		"files.associations": {
+			"stdio.h": "c"
+		}
+	}
+}
