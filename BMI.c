@@ -10,3 +10,4 @@ int main(void)
     printf("%.6f", result);
     return 0;
 }
+/*done*/
