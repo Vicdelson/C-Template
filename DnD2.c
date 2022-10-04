@@ -7,8 +7,8 @@ int main(void)
     {  
         scanf("%d %d %d %d %d %d", &d1, &d2, &d3, &d4, &d5, &d6);
         if ((d1+d2+d3)%2==0)
-        {
-            if((d5-d4)>d6)
+        {   
+             if((d5-d4)>d6||(d4-d5)>d6)
             {
                 player -= 15;
             }
@@ -41,9 +41,7 @@ int main(void)
     {
         printf("Dragon wins");
     }
-    else if(dragon <= 0)
-    {
+    else
         printf("Player wins");
-    }
 return 0;
 }
