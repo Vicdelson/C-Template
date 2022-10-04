@@ -3,10 +3,8 @@
 
 int main(void)
 {
-    float x = 167, y = 77, z = 2;
-    scanf("%f", &x);
-    scanf("%f", &y);
-    float result = x/ pow(y,z);
-    printf("%f\n", result);
+    int i = 3, j = 5, k;
+    k = (i >= j) ? 4 : 6;
+    printf("%d\n", k);
     return 0;
 }

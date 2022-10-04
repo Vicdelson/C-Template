@@ -1,40 +1,39 @@
-#include <stdio.h>
+#include<stdio.h>
 
-int main(void)
+int main()
 {
-    int d1,d2,d3,d4,d5,d6,first_sum;
-    scanf("%d %d %d %d %d %d", &d1, &d2, &d3, &d4, &d5, &d6);
-    first_sum=d1+d2+d3;
+    long long int i,large,small,total;
     
-    if( <= 10)
+    do
     {
-        if(first_sum<=10, d4==d5&&d5==d6)
-        {
-            printf("Player attacks: Critical Hit");
-        }
-        else if (d4+d5 >= d6)
-        {
-            printf("Player attacks: Normal Hit");
-        }   
-        else
-        {
-            printf("Player attacks: Miss");
-        }    
-    }   
+        
+    }
+    
+    if ( x > y || x > z)
+    {
+        large = x;
+    }
+    else if (x < y || x < z)
+    {
+        small = x;
+    }
+    else if (y > x || y > z)
+    {
+        large = y;
+    }
+    else if (y < x || y < z)
+    {
+        small = y;
+    }
+    else if (z > x || z > y)
+    {
+        large = z;
+    }
     else
     {
-        if(d4==d5||d5==d6||d4==d6)
-        {
-            printf("Dragon attacks: Miss");
-        }    
-        else if(d4+d5 != d6)
-        {
-            printf("Dragon attacks: Normal Hit");
-        }
-        else
-        {
-            printf("Dragon attacks: Critical Hit");
-        }         
-    }    
+        small = z;
+    }              
+    total = large - small;
+    printf("%d", total);
     return 0;
 }
