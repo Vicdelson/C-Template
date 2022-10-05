@@ -1,19 +1,75 @@
 #include <stdio.h>
-#include <math.h>
 
 int main(void)
 {
-    int d1,d2,d3,d4,d5,d6,hp_player = 100, hp_dragon=100, value, odd, even; 
-        scanf("%d %d %d %d %d %d", &d1, &d2, &d3, &d4, &d5, &d6);
-        if ((d1+d2+d3)%2==0)
+    int i, j, angle, layers, space;
+    scanf("%d %d", &angle, &layers);
+   while(angle<=4&&angle!=0)
+    {   
+        if(angle<=4&&angle!=0)
         {
-            value = 2;
-            even = 1;
+        switch (i)
+        {
+        case 1: angle == 1;
+        {
+        for(i=layers;i>0;--i)
+        {
+            for(j=0;j<i;++j)
+            {
+                printf("#");
+            }
+            printf("\n");
+        }
+        }
+        break; 
+        case 2 : angle == 2;
+        {
+        for(i = 1;i<=layers;++i)
+        {
+            for(j = 1; j <= i; ++j)
+            {
+                printf("#");
+            }
+            printf("\n");
+        }
+        }
+        break;
+        case 3 : angle == 3;
+        {
+        for(i= layers;i>0;--i)
+        {
+            for(space = 0; space < layers - i;space++)
+            {
+                printf(" ");
+            }
+            for(j=i;j<=2*i-1;++j)
+            {
+                printf("#");
+            }
+            printf("\n");
+        }
+        }
+        break;
+        case 4 :angle == 4;
+        {
+        for(i = 1; i <= layers; ++i)
+        {
+            for(space = 1; space <= layers-i;space++)
+            {
+                printf(" ");
+            }
+            for(j=0;j!= i;++j)
+            {
+                printf("#");
+            }
+            printf("\n");
+        }
+        }
+        }
         }
         else
-        {
-            value = 1;
-            odd = 2;
-        }
-    printf("%d", value);
+    {
+        break;
+    }
+    }
 }

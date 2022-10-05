@@ -41,7 +41,7 @@ int main(void)
             printf("\n");
         }
     }
-    else
+    else if(angle == 4)
     {
         for(i = 1; i <= layers; ++i)
         {
