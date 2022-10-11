@@ -2,7 +2,8 @@
 
 int main(void)
 {
-    int sequence,value,prefixsum = 0;
+    int sequence,value;
+    long prefixsum = 0;
     scanf("%d",&sequence);
     for(int i = 0;i<sequence;i++)
     {
@@ -10,7 +11,7 @@ int main(void)
         prefixsum += value;
         if(prefixsum%value==0)
         {
-            printf("%d %d",prefixsum, value);
+            printf("%ld %d", prefixsum, value);
             printf("\n");
         }
     }
