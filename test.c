@@ -1,17 +1,46 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdbool.h>
 
-int main(void)
+int main()
 {
-    int a,b,c,d;
-    int i,j,k,l;
-    int w,x,y,z;
-    
-    scanf("%d %d %d %d", &a, &b, &c, &d);
-    scanf("%d %d %d %d", &i, &j, &k, &l);
-    scanf("%d %d %d %d", &w, &x, &y, &z);
-    int sum1 = (a+b)*(c-d);
-    int sum2 = (i+j)*(k-l);
-    int sum3 = (w+x)*(y-z);
-    printf("%d %d %d",sum1, sum2, sum3);
-    return 0;
+	
+	char str;	
+	int numbers,amount=0;
+	scanf("%d\n", &numbers);
+	
+	while(amount != numbers)
+	{
+		scanf("%c",&str);
+		if(str == ';'|| str == ','|| str == '.')
+		{
+			printf("\n");
+			amount++;
+			continue;
+		}
+		for(int i=0; str!='\0'; i++)
+		{
+		if(i==0)
+		{
+			if((str>='a' && str<='z'))
+				str=str-32;
+			continue;
+		}
+		if(str==' ')
+		{
+			++i;
+			if(str>='a' && str<='z')
+			{
+				str=str-32;
+				continue;
+			}
+		}
+		else
+		{
+			if(str>='A' && str<='Z')
+				str=str+32;
+		}
+	}
+	}
+	printf("%s\n",str);
+	return 0;
 }
