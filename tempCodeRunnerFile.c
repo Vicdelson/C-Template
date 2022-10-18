@@ -1,1 +1,2 @@
-printf("%c",name);  
+
+    char score[100];

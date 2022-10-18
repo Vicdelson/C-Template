@@ -12,8 +12,11 @@ int main(void)
 	while(a[l-1]!='\n');
 	for(int i=0;i<l;i++){
 		if(a[i]=='\n')break;
-		int x=a[i]-'0';
+
+		int x = a[i]-'0';
+
 		float y=0.0;
+
 		i++;
 		if(a[i]=='A'){
 			y=4.0;
