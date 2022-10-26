@@ -26,7 +26,6 @@ int main(void)
                 name += 32;
             }
 		}
-		
 		if(name==' ')
 		{
 			value = true;

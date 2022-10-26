@@ -28,7 +28,7 @@ int main(void)
     //step 5
     temp |=~ d4&255;
     //step 6
-    temp = temp<<(32-d1-d2-d3-d4) | temp>>(d1+d2+d3+d4);
+    temp= temp<<(32-dice1-dice2-dice3-dice4) | temp>>(dice1+dice2+dice3+dice4);
     //temp = temp>>(d1+d2+d3+d4)|temp<<(32-(d1+d2+d3+d4));
     //step 7
     value = temp >> 16^temp&0xffff;

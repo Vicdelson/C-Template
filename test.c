@@ -1,40 +1,17 @@
 #include <stdio.h>
 
-int main(void)
-{
-	char a[1000];	
-	int l=0;
-	float score=0.0,credit=0.0;
-	do{
-		scanf("%c",&a[l]);
-		l++;
-	}
-	while(a[l-1]!='\n');
-	for(int i=0;i<l;i++){
-		if(a[i]=='\n')break;
-		int x=a[i]-'0';
-		float y=0.0;
-		i++;
-		if(a[i]=='A'){
-			y=4.0;
-		}else if(a[i]=='B'){
-			y=3.0;
-		}else if(a[i]=='C'){
-			y=2.0;
-		}else{
-			y=0.0;
-		}
-		if(a[i+1]=='+'){
-			y+=0.3;
-			i++;
-		}else if(a[i+1]=='-')
-		{
-			y-=0.3;
-			i++;
-		}
-		score+=x*y;
-		credit+=x;
-	}
-	printf("%.2f",score/credit);
-	return 0;
+int main () {
+    unsigned N,temp=0x00000000,d1,d2,d3,d4,D1,D2,D3,D4;
+    unsigned short K;
+    scanf("%u%d%d%d%d",&N,&d1,&d2,&d3,&d4);
+    D1=d1,D2=d2,D3=d3,D4=d4;
+    D1=N>>(4-d1)*8 & 255,D2=N>>(4-d2)*8 & 255,D3=N>>(4-d3)*8 & 255,D4=N>>(4-d4)*8 & 255;
+    temp |=(D1 ^ D2) << 24;
+    temp |=(D3 & D2) << 16;
+    temp |=(D3 | D1) << 8;
+    temp |=~D4 & 0xff ;
+    temp= temp<<(32-d1-d2-d3-d4) | temp>>(d1+d2+d3+d4);
+    K= temp>>16 ^ temp & 0xffff;
+    printf("%hu",K);
+    return 0;
 }
