@@ -11,8 +11,8 @@ int main(void)
 
     scanf("%u%d%d%d%d", &N,&dice1, &dice2,&dice3,&dice4);
 
-    byte[dice1-1] = N>>(4-dice1)*8&225;
-    byte[dice2-1] = N>>(4-dice2)*8&225;
+    byte[dice1-1] = N>>(4-dice1)*8&255;
+    byte[dice2-1] = N>>(4-dice2)*8&255;
     byte[dice3-1] = N>>(4-dice3)*8&255;
     byte[dice4-1] = N>>(4-dice4)*8&255;
     //step 2
