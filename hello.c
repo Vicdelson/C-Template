@@ -3,7 +3,7 @@
 int main(void)
 {
     int a;
-    a= 12/10;
+    a= 0-1;
     printf("%d",a);
     return 0;
 }
