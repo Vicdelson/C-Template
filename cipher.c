@@ -5,11 +5,11 @@ int main(void)
   long k;
   unsigned char ch, temp, ad;
   scanf("%ld", &k);
-  temp = getchar();
+  temp = getchar(); 
   ad = getchar();
   temp = getchar();
   ch = getchar();
-  k %= 26;
+  //k %= 26;
   while (ch != '\n')
   {
     if (ch <= 'z' && ch >= 'a')

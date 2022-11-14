@@ -1,75 +1,26 @@
 #include <stdio.h>
 
-int main(void)
+int a_1, a_n, d;
+//a_1 first term
+//a_n last term
+//d common difference
+
+int sum(int a_i);
+
+int main()
 {
-    int i, j, angle, layers, space;
-    scanf("%d %d", &angle, &layers);
-   while(angle<=4&&angle!=0)
-    {   
-        if(angle<=4&&angle!=0)
-        {
-        switch (i)
-        {
-        case 1: angle == 1;
-        {
-        for(i=layers;i>0;--i)
-        {
-            for(j=0;j<i;++j)
-            {
-                printf("#");
-            }
-            printf("\n");
-        }
-        }
-        break; 
-        case 2 : angle == 2;
-        {
-        for(i = 1;i<=layers;++i)
-        {
-            for(j = 1; j <= i; ++j)
-            {
-                printf("#");
-            }
-            printf("\n");
-        }
-        }
-        break;
-        case 3 : angle == 3;
-        {
-        for(i= layers;i>0;--i)
-        {
-            for(space = 0; space < layers - i;space++)
-            {
-                printf(" ");
-            }
-            for(j=i;j<=2*i-1;++j)
-            {
-                printf("#");
-            }
-            printf("\n");
-        }
-        }
-        break;
-        case 4 :angle == 4;
-        {
-        for(i = 1; i <= layers; ++i)
-        {
-            for(space = 1; space <= layers-i;space++)
-            {
-                printf(" ");
-            }
-            for(j=0;j!= i;++j)
-            {
-                printf("#");
-            }
-            printf("\n");
-        }
-        }
-        }
-        }
-        else
+    scanf("%d %d %d", &a_1, &a_n, &d);
+    printf("%d", sum(a_1));
+    return 0;
+}
+//sum = (num * (2 * a + (num - 1) * diff)) / 2;
+   //tn = a + (num - 1) * diff;
+int sum(int a_i) {
+    if(a_i < a_n)
     {
-        break;
-    }
-    }
+        return(a_i + sum(a_i + d));
+    } 
+    else if (a_i == a_n){
+        return a_i;
+    } 
 }

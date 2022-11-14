@@ -2,7 +2,9 @@
 
 int main(void)
 {
-    int n, time[30], departure_hour[30], departure_min[30], i, default_hour, default_min, x[30], minn_hour = 100, minn_min = 100, result = 0;
+    int n, time[30], departure_hour[30], departure_min[30],
+    i, default_hour, default_min, x[30], minn_hour = 100,
+    minn_min = 100, result = 0;
     scanf("%d :%d", &default_hour, &default_min);
     scanf("%d", &n);
 
@@ -17,11 +19,11 @@ int main(void)
         {
             departure_hour[i] += time[i] / 60;
             departure_min[i] += time[i] % 60;
-            if (departure_min[i] >= 60)
+            /*if (departure_min[i] >= 60)
             {
                 departure_hour[i] += departure_min[i] / 60;
                 departure_min[i] = departure_min[i] % 60;
-            }
+            }*/
 
             if (departure_hour[i] <= minn_hour)
             {
