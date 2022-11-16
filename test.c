@@ -1,27 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int a_1, a_n, d;
-//a_1 first term
-//a_n last term
-//d common difference
+#define ARRAY 30
 
-int sum(int a_i);
+int recipe[ARRAY],times,craft[ARRAY][ARRAY],items=0;
 
-int main()
+int totalItem();
+
+int main() 
 {
-    scanf("%d %d %d", &a_1, &a_n, &d);
-    printf("%d", sum(a_1));
+    scanf("%d", &times);
+    for (int i = 0; i < times; i++) 
+    {
+        scanf("%d", &recipe[i+1]);
+        if (recipe[i+1] != 0)
+        {
+            for (int j = 0; j < recipe[i+1]; j++)
+            {
+                scanf("%d", &craft[i+1][j]);
+            }
+        }
+        else
+        {
+            craft[i][0] = i;
+        }
+    }
+    for (int i = 0; i < times; i++)
+    {
+        totalItem(i+1);
+    }
+    printf("%d", items);
     return 0;
 }
-//sum = (num * (2 * a + (num - 1) * diff)) / 2;
-   //tn = a + (num - 1) * diff;
-int sum(int a_i) {
-    if (a_i==a_n)
+
+int totalItem(int crafting) 
+{
+    if (craft[crafting][0] != crafting)
     {
-        return a_i;
+        for (int j = 0; craft[crafting][j] != 0; j++)
+        {
+            totalItem(craft[crafting][j]);
+        }
     }
-    else if(a_i < a_n)
-    {   
-        return a_i+sum(a_i+d);
+    else
+    {
+        items++;
     }
+    return items;
 }

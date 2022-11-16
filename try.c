@@ -1,162 +1,49 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 
-#define MAX 1024
+#define ARRAY 30
 
-int N;
-int sign[MAX];
-char rps[MAX];
-char bs[MAX];
+int recipe[ARRAY],times,craft[ARRAY][ARRAY],items=0;
 
-void innings(int mark, int stage, int arbitrary);
-int compete(int mark);
-void judge(int mark, int x, int y, int z);
+int totalItem();
 
-int main(){
-    scanf("%d ", &N);
-    int arbitrary = 1;
-    int mark = 0;
-    for(int i = 0; i < N; i++)
-    {
-        scanf("%c", &rps[i]);
-    }
-    scanf(" ");
-    for(int i = 0; i < log2(N); i++){
-        scanf("%c", &bs[i]);
-    }
-    if(N == 1)
-    {
-        printf("1");
-        return 0;
-    }
-    mark = compete(mark);
-    innings(mark, 1, 2);
+int main()
+{
+    scanf("%d", &times);
     
-    printf("%d",sign[0] + 1);
-    //prs
-}
-int compete(int mark){
-    int win = 0;
-        for(int i = 0; i < N; )
+    for(int i=1;i<=times;i++)
+    {
+        scanf("%d", &recipe[i]);
+        if(recipe[i]!= 0)
         {
-            if(rps[i] == 'r' && rps[i+1] == 's')
+            for(int j=0;j<recipe[i];j++)
             {
-               sign[win] = i;
-               win++;
-                i += 2;
-            } 
-            else if(rps[i] == 's' && rps[i+1] == 'r')
-            {
-               sign[win] = i + 1;
-               win++;
-               i+= 2;
-            } 
-            else if(rps[i] == 'p' && rps[i+1] == 'r')
-            {    
-               sign[win] = i;
-               win++;
-               i += 2;
-            } 
-            else if(rps[i] == 'r' && rps[i+1] == 'p')
-            {
-               sign[win] = i+1;
-               win++;
-               i+=2;
-            } 
-            else if(rps[i] == 's' && rps[i+1] == 'p')
-            {   
-               sign[win] = i;
-               win++;
-               i += 2;
-            } 
-            else if(rps[i] == 'p' && rps[i+1] == 's')
-            {
-               sign[win] = i+1;
-               win++;
-               i += 2;
-            } 
-            else
-            { 
-                if(bs[mark] == 's')
-                {
-                    sign[win] = i;
-                    win++;
-                    i += 2;
-                } 
-                else
-                {
-                    sign[win] = i+1;
-                    win++;
-                    i+= 2;
-                }
+                scanf("%d ", &craft[i][j]);
             }
         }
-    return ++mark;
-}
-
-void innings(int mark, int stage, int arbitrary)
-{
-    if(stage < log2(N))
-    {
-        //rock < paper < scissor < rock
-        /*
-        r p s
-        p s r 
-        s r p
-        */
-        int win = 0;
-        for(int i = 0; i < N/arbitrary; i+=2)
+        else
         {
-            if(rps[sign[i]] == 'r' && rps[sign[i+1]] == 's'){   
-                sign[win++] = sign[i];
-                
-            } else if(rps[sign[i]] == 's' && rps[sign[i+1]] == 'r'){   
-                sign[win++] = sign[i + 1];
-                
-            } else if(rps[sign[i]] == 'p' && rps[sign[i+1]] == 'r'){    
-                sign[win++] = sign[i];
-                
-            } else if(rps[sign[i]] == 'r' && rps[sign[i+1]] == 'p'){    
-                sign[win++] = sign[i + 1];
-            
-                
-            } else if(rps[sign[i]] == 's' && rps[sign[i+1]] == 'p'){   
-                sign[win++] = sign[i];
-                
-                
-            } else if(rps[sign[i]] == 'p' && rps[sign[i+1]] == 's'){  
-                sign[win++] = sign[i + 1];               
-                
-            } else if(rps[sign[i]] == 'p' && rps[sign[i+1]] == 'p'){
-                judge(mark, sign[i], sign[i+1], win);
-                win++;
-            } else if(rps[sign[i]] == 's' && rps[sign[i+1]] == 's'){
-                judge(mark, sign[i], sign[i+1], win);
-                win++;
-            } else if(rps[sign[i]] == 'r' && rps[sign[i+1]] == 'r'){
-                judge(mark, sign[i], sign[i+1], win);
-                win++;
-            }
+            craft[i][0] = i;
         }
-        innings(++mark, ++stage, arbitrary);
     }
-    
+    for(int i=1;i<=times;i++)
+    {
+        totalItem(i);
+    }
+    printf("%d",items);
 }
 
-void judge(int mark, int x, int y, int z)
+int totalItem(int crafting)
 {
-    if(bs[mark] == 's'){
-        if(x < y){
-            sign[z] = x;
-        } else if(x > y){
-            sign[z] = y;
-        }
-    } else if(bs[mark] == 'b'){
-        if(x > y){
-            sign[z] = x;
-
-        } else if(x < y){
-            sign[z] = y;
+    if(craft[crafting][0] == crafting)
+    {
+        items++;
+    }
+    else
+    {
+        for(int j = 0; craft[crafting][j]!=0;j++)
+        {
+            totalItem(craft[crafting][j]);
         }
     }
 }
