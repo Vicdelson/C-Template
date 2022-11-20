@@ -10,7 +10,7 @@ void printBinary(void *n)
     // Prints the binary representation
     // of a number n up to k-bits.
     // to IEEE 754 floating point representation
-    for (int k = 31; k >= 0; k--) 
+    for (int k = 32; k > 0; k--) 
     {
         printf("%d", (*(int *)n >> k) & 1);
         if (k && !(k % 8))
@@ -35,9 +35,10 @@ void calculation()
     printBinary((int *)p2);
     printf("\n");
     printf("---------------------------------------");
+    printf("\n")
     printf("   ");
 
-    for (int k = 31; k >= 0; k--) 
+    for (int k = 32; k > 0; k--) 
     {
         printf("%d", (*(int *)p1 + *(int *)p2 >> k) & 1);
         if (k && !(k % 8))
@@ -50,7 +51,7 @@ void calculation()
     int first = firstNumber;
     int second = secondNumber;
     int last = first + second;*/
-    printf("%d + %d = %u", (int)firstNumber, (int)secondNumber, (*(int *)p1+ *(int *)p2));
+    printf("%d + %d = %d", (int)firstNumber, (int)secondNumber, (*(int *)p1+ *(int *)p2));
 }
 
 int main()

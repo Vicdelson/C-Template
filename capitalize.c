@@ -1,10 +1,11 @@
 #include<stdio.h>
-#define MAX 100
 #include<stdbool.h>
+
+#define MAX 100
 
 int main(void)
 {
-    char name[100]={0};
+    char name[MAX]={0};
     int number;
 	bool value=true;
 	scanf("%d\n",&number);
@@ -27,13 +28,11 @@ int main(void)
                 name[i] += 32;
             }
 		}
-		
 		if(name[i]==' ')
 		{
 			value = true;
 			continue;
 		}
-        
 		if(name[i] == ';' ||name[i] == '.' ||name[i] == ',')
 		{
 			name[i]='\n';

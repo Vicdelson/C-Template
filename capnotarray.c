@@ -1,44 +1,48 @@
 #include<stdio.h>
+#define MAX 100
 #include<stdbool.h>
 
 int main(void)
 {
-    char name;
-    int n = 0;
+    char name[100]={0};
     int number;
 	bool value=true;
-    scanf("%d\n",&number);
-   while(n != number)
+	scanf("%d\n",&number);
+	scanf("%[^\n]s",name);
+    for(int n=0;n<=number;n++)
 	{		
-        scanf("%c",&name);
+		for(int i=0; name[i]!='\0'; i++)
+		{
 		if(value == true)
 		{
-			if(name >= 'a' && name <= 'z'){
-                name -= 32;
+			if(name[i] >= 'a' && name[i] <= 'z'){
+                name[i] -= 32;
                 value = false;
-            } else if(name >='A' && name <='Z'){
+            } else if(name[i] >='A' && name[i] <='Z'){
                 value = false;
             }
-			
-		} else if (value == false)
-        {
-			if(name >= 'A' && name <= 'Z'){
-                name += 32;
+			continue;
+		} else if (value == false){
+			if(name[i] >= 'A' && name[i] <= 'Z'){
+                name[i] += 32;
             }
 		}
-		if(name==' ')
+		
+		if(name[i]==' ')
 		{
 			value = true;
+			continue;
 		}
         
-		if(name == ';' ||name == '.' ||name == ',')
+		if(name[i] == ';' ||name[i] == '.' ||name[i] == ',')
 		{
-			printf("\n");
+			name[i]='\n';
 			n++;
             value = true;
             continue;
-        } 
-          printf("%c",name);  
-	    }
+        }    
+	}
+	}
+    printf("%s\n",name);
 	return 0;
 }
