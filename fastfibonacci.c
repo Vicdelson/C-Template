@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 typedef unsigned long long uint64_t;
+
 void fib_fast_doubling(unsigned k, uint64_t *f2k, uint64_t *f2k1)
 {
    if (k == 0)

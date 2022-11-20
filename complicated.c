@@ -28,15 +28,15 @@ int main(void)
 
     for(;;)
     {
-        printf("To add a member to NCKU, type 'add'. \n");
-        printf("To remove a member from NCKU, type 'remove'. \n");
+        printf("To add a member to Kota Wibu, type 'add'. \n");
+        printf("To remove a member from Kota Wibu, type 'remove'. \n");
         printf("To see a list of the members, type 'list'. \n");
         printf("If you are done creating the list, type 'done', \n");
         scanf("%s", cmd);
 
         if(!strcmp(cmd, "done"))
         {
-            printf("The list of NCKU is complete! The semester can begin...\n");
+            printf("The list of Kota Wibu is complete! The adventure can begin...\n");
             break;
         }
         else if(!strcmp(cmd,"list"))
@@ -44,7 +44,7 @@ int main(void)
             int count = 0;
             if(head_member == NULL)
             {
-                printf("\nThe list of NCKU has not been formed yet. \n\n");
+                printf("\nThe list of Kota Wibu has not been formed yet. \n\n");
             }
             else
             {
@@ -58,16 +58,16 @@ int main(void)
         }
         else if(!strcmp(cmd, "remove"))
         {
-            printf("\nWho is leaving NCKU? ");
+            printf("\nWho is leaving Kota Wibu? ");
             scanf("%s", name);
             if(remove_member(name))
             {
-                printf("\n%s has left NCKU.\n\n", name);
+                printf("\n%s has left Kota Wibu.\n\n", name);
             }
         }
         else if(!strcmp(cmd,"add"))
         {
-            printf("Who is joining NCKU? ");
+            printf("Who is joining Kota Wibu? ");
             scanf("%s", name);
             printf("What race is %s? ", name);
             scanf("%s", race);

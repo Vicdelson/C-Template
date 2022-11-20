@@ -1,60 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float firstNumber, secondNumber, result;
+typedef unsigned long long uint64_t;
 
-void calculation();
-
-void printBinary(void *n)
+void fib_fast_doubling(unsigned k, uint64_t *f2k, uint64_t *f2k1)
 {
-    // Prints the binary representation
-    // of a number n up to k-bits.
-    // to IEEE 754 floating point representation
-    for (int k = 31; k >= 0; k--) 
-    {
-        printf("%d", (*(int *)n >> k) & 1);
-        if (k && !(k % 8))
-        {
-            printf(" ");
-        }
-    }
+   if (k == 0)
+   {
+       *f2k = 0;
+       *f2k1 = 1;
+       return;
+   }
+   uint64_t fk, fk1;
+   fib_fast_doubling(k / 2, &fk, &fk1);
+   *f2k1 = fk * fk + fk1 * fk1;
+   *f2k = fk * (fk1 * 2 - fk);
+   if (k & 1)
+   {
+       uint64_t tmp = *f2k1;
+       *f2k1 = *f2k + *f2k1;
+       *f2k = tmp;
+   }
 }
-void calculation()
-{
-    scanf("%f %f", &firstNumber, &secondNumber);
-    result = firstNumber + secondNumber;
-
-    void *p1 = &firstNumber;
-    void *p2 = &secondNumber;
-    void *p3 = &result;
-
-    printf("   ");
-    printBinary((int *)p1);
-    printf("\n");
-    printf("+) ");
-    printBinary((int *)p2);
-    printf("\n");
-    printf("---------------------------------------");
-    printf("   ");
-
-    for (int k = 31; k >= 0; k--) 
-    {
-        printf("%d", (*(int *)p1 + *(int *)p2 >> k) & 1);
-        if (k && !(k % 8))
-        {
-            printf(" ");
-        }
-    }
-    printf("\n");
-    /**result = *firstNumber + *secondNumber;
-    int first = firstNumber;
-    int second = secondNumber;
-    int last = first + second;*/
-    printf("%d + %d = %u", (int)firstNumber, (int)secondNumber, (*(int *)p1+ *(int *)p2));
-}
-
 int main()
 {
-    calculation();
-    return 0;
+   unsigned k;
+   scanf("%u", &k);
+   uint64_t f2k, f2k1;
+   fib_fast_doubling(k / 2, &f2k, &f2k1);
+   printf("%llu", (k & 0x1) ? f2k1 : f2k);
+   return 0;
 }
