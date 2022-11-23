@@ -1,49 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
+long long int first, second;
 
-#define ARRAY 30
+long long int trueFalse = 1;//say this as boolean
 
-int recipe[ARRAY],times,craft[ARRAY][ARRAY],items=0;
-
-int totalItem();
-
-int main()
+void fib_fast_doubling(unsigned k, uint64_t *f2k, uint64_t *f2k1)
 {
-    scanf("%d", &times);
+ if(trueFalse == 1)
+    {
+        k = k * 2;//because of k/2
+        trueFalse = -1;
+    }
+    if(k == 0)
+    {
+        *f2k = 0;//*f2k =1
+        *f2k1 = 1;
+        return;
+    }
     
-    for(int i=1;i<=times;i++)
-    {
-        scanf("%d", &recipe[i]);
-        if(recipe[i]!= 0)
-        {
-            for(int j=0;j<recipe[i];j++)
-            {
-                scanf("%d ", &craft[i][j]);
-            }
-        }
-        else
-        {
-            craft[i][0] = i;
-        }
-    }
-    for(int i=1;i<=times;i++)
-    {
-        totalItem(i);
-    }
-    printf("%d",items);
-}
+    fib_fast_doubling(k/2, f2k, f2k1);
 
-int totalItem(int crafting)
-{
-    if(craft[crafting][0] == crafting)
+    first = 2 * *f2k1 - *f2k;//2 * f(k+1) - fk
+    first = (*f2k * temp3);   //F(2k) = f(k) * [2 * f(k+1) - fk]
+    second = ((*f2k) * (*f2k) + (*f2k1) * (*f2k1)); //F(2k + 1)
+    
+     /*if (k & 1)
+   {
+       uint64_t tmp = *f2k1;
+       *f2k1 = *f2k + *f2k1;
+       *f2k = tmp;
+   }*/
+
+    if(k % 2 == 0)
     {
-        items++;
-    }
-    else
+        *f2k = first;
+        *f2k1 = second;
+    } 
+    else if(k % 2 == 1)
     {
-        for(int j = 0; craft[crafting][j]!=0;j++)
-        {
-            totalItem(craft[crafting][j]);
-        }
+        *f2k = second;
+        *f2k1 = first + second;
     }
 }

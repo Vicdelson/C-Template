@@ -2,8 +2,8 @@
 
 int main(void)
 {
-    int a;
-    a= 0-1;
-    printf("%d",a);
-    return 0;
+    unsigned k;
+    scanf("%u", &k);
+    long long unsigned l = k/2;
+    printf("%u", k/2);
 }
