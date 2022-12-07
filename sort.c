@@ -25,14 +25,16 @@ int main()
     }
 }
 
-int arr[ARR_MAX] = {0}, N = 0, i = 0, j = 0, k = 0, l= 0;
+int arr[ARR_MAX] = {0}, N = 0, i = 0, j = 0, k = 0, l= 0,
+m=0,n=0,sort, dist;
 
 // A function to implement bubble sort
-/*void swap(int* xp, int* yp)
+/*void sort_section(int* ptr, int* qtr)
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
+    int temp = *ptr;
+    *ptr = *qtr;
+    *qtr = temp;
+    bubbleSort(int *ptr, int *qtr)
 }
 void bubbleSort(int arr[], int n)
 {
@@ -56,7 +58,7 @@ void bubbleSort(int arr[], int n)
 
 void sort_section(int *ptr, int *qtr) 
 {
-    for(N = 0;N < ARR_MAX; N++)
+    /*for(N = 0;N < ARR_MAX; N++)
     {     
       if(ptr[N] == *qtr)
       {
@@ -71,14 +73,60 @@ void sort_section(int *ptr, int *qtr)
     {
         for(j = 0; j < N - 1 - i; j++)
         {
-            if(ptr[j] > ptr[j + 1]){
-              l = ptr[j];
-              ptr[j] = ptr[j + 1];
-              ptr[j + 1] = l;   
+            if(ptr[j] > ptr[j + 1])
+            {
+                l = ptr[j];
+                ptr[j] = ptr[j + 1];
+                ptr[j + 1] = l;   
             }
         }
-        for(k = 0; k < N; k++){
+        for(k = 0; k < N; k++)
+        {
           printf("%d ", ptr[k]);
-        } printf("\n");      
-    }  
+        } 
+        printf("\n");      
+    }*/
+    dist = qtr - ptr;
+    if(dist < 0)
+    {
+        length = abs(dist);
+
+        for(i = 0;i < dist;i++)
+        {
+            for(j = 0;j < dist - i;j++)
+            {
+                if(qtr[j] > qtr[j+1])
+                {
+                    sort = qtr[j];
+                    qtr[j] = qtr[j+1];
+                    qtr[j+1] = swap;
+                }  
+            }
+            for(k = 0;k < dist + 1;k++)
+            {
+                printf("%d ", qtr[k]);
+            }
+            printf("\n");
+        }
+    } 
+    else
+    {
+        for(l = 0;l < dist; l++)
+        {
+            for(m = 0;m < dist - i;m++)
+            {
+                if(ptr[m] > ptr[m+1])
+                {
+                    sort = ptr[m];
+                    ptr[m] = ptr[m+1];
+                    ptr[m+1] = swap;
+                }
+            }
+        for(n = 0;n < dist + 1;n++)
+        {
+            printf("%d ", ptr[n]);
+        }
+       printf("\n");
+        }
+    }
 }

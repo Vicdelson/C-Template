@@ -2,13 +2,13 @@
 #define N 10
 int main(void)
 {
-int a[N], i;
+int a[N], *p;
 printf("Enter %d numbers: ", N);
-for (i = 0; i < N; i++)
-scanf("%d", &a[i]);
+for (p = a; p < a + N; p++)
+scanf("%d", p);
 printf("In reverse order:");
-for (i = N - 1; i >= 0; i--)
-printf(" %d", a[i]);
+for (p = a + N - 1; p >= a; p--)
+printf(" %d", *p);
 printf("\n");
 return 0;
 }
