@@ -1,0 +1,90 @@
+#include <stdio.h>
+#define SIZE 50
+
+struct mat {
+    int row;
+    int col;
+    int value[SIZE][SIZE];
+};
+
+void scan_mat(struct mat *);
+void print_mat(const struct mat *);
+void add_mat(const struct mat *, const struct mat *, struct mat *);
+void mul_mat(const struct mat *, const struct mat *, struct mat *);
+
+int main(void) {
+    struct mat m1, m2, result;
+    char op;
+    scan_mat(&m1);
+    scanf(" %c", &op);
+    scan_mat(&m2);
+    switch (op) {
+        case '+':
+            add_mat(&m1, &m2, &result);
+            break;
+        case '*':
+            mul_mat(&m1, &m2, &result);
+            break;
+    }
+    print_mat(&result);
+    return 0;
+}
+
+void scan_mat(struct mat *m_p) {
+    scanf("%d %d", &m_p->row, &m_p->col);
+    for (int i = 0; i < m_p->row; ++i) {
+        for (int j = 0; j < m_p->col; ++j) {
+            scanf("%d", &m_p->value[i][j]);
+        }
+    }
+}
+
+void print_mat(const struct mat *m_p){
+    for (int i = 0; i < m_p->row; ++i) {
+        for (int j = 0; j < m_p->col; ++j) {
+            printf("%d ", m_p->value[i][j]);
+            if (j == m_p->col - 1) {
+                printf("\n");
+            }
+        }
+    }
+// function to perform matrix addition
+void add_mat(const struct mat *m1, const struct mat *m2, struct mat *result)
+{
+    // numbers of rows and columns in the resultant matrix is similar
+    // to both the matrix in addition
+    result->row = m1->row;
+    result->col = m1->col;
+
+    // performing matrix multiplication
+    for (int i = 0; i < m1->row; ++i)
+    {
+        for (int j = 0; j < m2->col; ++j)
+        {
+            // addition the element of matrices
+            result->value[i][j] = m1->value[i][j] + m2->value[i][j];
+        }
+    }
+}
+// function to perform matrix multiplication
+void mul_mat(const struct mat *m1, const struct mat *m2, struct mat *result)
+{
+    // In matrix multiplication
+    // number of rows in resultant matrix is equal to the number of rows in first matrix
+    // number of cols in resultant matrix is equal to the number of cols in second matrix
+    result->row = m1->row;
+    result->col = m2->col;
+
+    // performing the matrix multiplication
+    for (int i = 0; i < m1->row; i++)
+    {
+        for (int j = 0; j < m2->col; j++)
+        {
+            result->value[i][j] = 0; // setting zero on the element position
+            for (int k = 0; k < m1->col; k++)
+            {
+                result->value[i][j] += m1->value[i][k] * m2->value[k][j];
+            }
+        }
+    }
+}
