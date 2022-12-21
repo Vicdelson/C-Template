@@ -2,46 +2,32 @@
 #include <stdlib.h>
 
 struct node {
-    /*long long*/ int val;
+    int val;
     struct node *next;
 };
 struct node *head = NULL;
 struct node *tail = NULL;
 void MoveToTail();
 
-int main(void) {
-    //struct node *head = NULL;
-    //struct node *tail = NULL;
-    /*long long*/ int n;
-    //scanf("%lld", &n);
+int main(void) { 
+    int n;
     scanf("%d", &n);
-    for (/*long long*/ int i = 1; i <= n /*&& i <= 1000 && 5 <= n && n <= 1000*/; ++i) {
+    for(int i = 1; i <= n; ++i) {
         struct node *tmp = malloc(sizeof(struct node));
-        /*long long int val;
-        scanf("%lld", &val);
-        if (val < 100000) {
-            tmp->val = val;
-        } else {
-            printf("Error: Element value is not strictly less than 100000.\n");
-            return 1;
-        }*/
         scanf("%d", &tmp->val);
         tmp->next = NULL;
-        if (i == 1) {
-           head = tmp;
-        } else {
-           tail->next = tmp;
-        }
-           tail = tmp;
-        }
-        MoveToTail(/*&head, &tail*/);
-        for (struct node *cur = head; cur != NULL; cur = cur->next) {
-            //printf("%lld ", cur->val);
-            printf("%d ", cur->val);
-        }
-        return 0;
+        if(i == 1)
+            head = tmp;
+        else
+            tail->next = tmp;
+        tail = tmp;
+    }
+    MoveToTail();
+    for(struct node *cur = head; cur != NULL; cur = cur->next) {
+        printf("%d ", cur->val);
+    }
+    return 0;
 }
-// Function to move the maximum value to the tail of the linked list
 void MoveToTail(struct node **head, struct node **tail) {
     // Initialize the maximum value to the head of the list
     struct node *max = *head;
