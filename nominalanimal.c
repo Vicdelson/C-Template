@@ -125,7 +125,6 @@ unsigned long *sieve(const size_t limit)
 
     return prime;
 }
-
 int main(int argc, char *argv[])
 {
     unsigned long *prime;

@@ -4,6 +4,7 @@
 
 int map[MAX_SIZE][MAX_SIZE];
 int visited[MAX_SIZE][MAX_SIZE];
+int total=0;
 
 void dfs(int x, int y) 
 {
@@ -11,15 +12,15 @@ void dfs(int x, int y)
     {
         return;
     }
-visited[x][y] = 1;
+    visited[x][y] = 1;
     if (map[x][y] == 2) 
     {
-        printf("%d %d\n", x, y);
+        total++;
     }
-dfs(x - 1, y);
-dfs(x + 1, y);
-dfs(x, y - 1);
-dfs(x, y + 1);
+    dfs(x - 1, y);
+    dfs(x + 1, y);
+    dfs(x, y - 1);
+    dfs(x, y + 1);
 }
 
 int main() 
@@ -35,5 +36,6 @@ for (int i = 0; i < MAX_SIZE; i++)
     }
 }
 dfs(start_x, start_y);
+printf("%d", total);
 return 0;
 }
