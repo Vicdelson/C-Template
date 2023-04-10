@@ -19,3 +19,21 @@ int main()
     tmr.hello(username);
     return 0;
 }
+
+/*Difference Between getline() and cin
+string str ;
+
+getline(cin, str);
+cout << "getline() get " << str
+<< "\t length = " << str.length() << endl;
+
+> ./getline_cin
+getline() get NCKU is best !
+NCKU is best!
+length = 13
+
+cin >> str;
+cout << " cin get " << str
+<< "\t length = " << str.length() << endl;
+NCKU is best!
+cin get NCKU length = 4*/
